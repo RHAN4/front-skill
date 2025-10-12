@@ -24,7 +24,7 @@ function Header() {
         return (
             <>
                 <header>
-                    <div class="nome__projeto">
+                    <div className="nome__projeto">
                         <div>
                             <img src='/assets/images/logoSemTexto.png' alt='logo'></img>
                         </div>
@@ -35,7 +35,7 @@ function Header() {
 
                     </div>
 
-                    <div class="redes__sociais">
+                    <div className="redes__sociais">
                         <div>
                             <img src="/assets/images/facebook.png" alt="facebook" />
                         </div>
@@ -51,7 +51,7 @@ function Header() {
                     </div>
                 </header>
 
-                <nav class="navegacao">
+                <nav className="navegacao">
                     <dl>
                         <button onClick={irParaHome}>
                             <dt>HOME</dt>

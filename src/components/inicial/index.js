@@ -6,11 +6,11 @@ function Inicial() {
 
     <div>
 
-      <main class="main-inicial">
+      <main className="main-inicial">
 
-        <div class='descricao'>
+        <div className='descricao'>
 
-          <div class="cabeca">
+          <div className="cabeca">
             <h1>Gerencie suas <span>habilidades</span> de <br /> forma inteligente</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et
               dolore magna aliqua. <br /> Ut enim ad minim veniam, quis nostrud <br />exercitation ullamco laboris nisi ut aliquip
@@ -18,14 +18,14 @@ function Inicial() {
             </p>
           </div>
 
-          <div class="cards-cadastro-avaliacao">
-            <div class="cadastro">
+          <div className="cards-cadastro-avaliacao">
+            <div className="cadastro">
               <img src="/assets/images/icone-gerenciar.png" alt="icone-gerenciar" />
               <h3>Cadastros</h3>
               <aside>Gerencie usuários e perfis</aside>
             </div>
 
-            <div class="avaliacao">
+            <div className="avaliacao">
               <img src="/assets/images/icone-medalha.png" alt="icone-medalha" />
               <h3>Avaliações</h3>
               <aside>Avalie competências</aside>
@@ -34,7 +34,7 @@ function Inicial() {
 
         </div>
 
-        <div class="logo-central">
+        <div className="logo-central">
 
           <div>
 
