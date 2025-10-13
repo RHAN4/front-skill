@@ -1,55 +1,28 @@
 import './styles.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
-
+import { useAuth } from '../../context/AuthContext';
 import useMensagem from '../../hooks/useMensagem';
 import MensagemFeedback from '../mensagemFeedback';
 
 function Login() {
-    const [login, setLogin] = useState('');
+    const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const navigate = useNavigate();
+    const { login } = useAuth();
     const { mensagem, tipoMensagem, visivel, exibirMensagem, fecharMensagem } = useMensagem();
 
     async function handleLogin(e) {
         e.preventDefault();
 
-        // Adicionando a validação de campos vazios
-        if (!login || !senha) {
+        if (!email || !senha) {
             exibirMensagem('Preencha todos os campos para continuar.', 'erro');
-            return; // Interrompe a execução da função
+            return;
         }
         
         try {
-            // SIMULAÇÃO DA RESPOSTA DO BACK-END
-            const resultadoSimulado = new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    // Simule um erro para testar a mensagem de erro
-                    // descomente a linha abaixo para testar o erro
-                    // reject({ response: { status: 401 } });
-
-                    // Simule um sucesso
-                    resolve({ data: { token: 'seu-token-de-exemplo' } });
-                }, 1000);
-            });
-
-            const response = await resultadoSimulado;
-
-            localStorage.setItem('token', response.data.token);
-            localStorage.setItem('login', login);
-
-            exibirMensagem('Login realizado com sucesso!', 'sucesso');
-            
-            setTimeout(() => {
-                navigate('/dashboard');
-            }, 1000);
-
+            await login(email, senha);
         } catch (error) {
-            if (error.response && error.response.status === 401) {
-                exibirMensagem('Login ou senha incorretos. Tente novamente.', 'erro');
-            } else {
-                exibirMensagem('Ocorreu um erro ao tentar conectar com o servidor.', 'erro');
-            }
+            exibirMensagem('Login ou senha incorretos. Tente novamente.', 'erro');
         }
     }
 
@@ -67,16 +40,15 @@ function Login() {
                     <h2>Faça login na sua conta</h2>
                 </div>
 
-
                 <form onSubmit={handleLogin} className="form-login">
-                    <label>E-mail: <br />
+                    <label>E-mail ou CNPJ: <br />
                         <input
-                            type="email"
+                            type="text"
                             name="email"
                             id="email"
                             placeholder="Digite seu e-mail"
-                            value={login}
-                            onChange={(e) => setLogin(e.target.value)}
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </label>
 

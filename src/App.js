@@ -1,25 +1,41 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TelaInicial from './pages/TelaInicial/index.js';
-import TelaCadastro from './pages/TelaCadastro/index.js';
-import TelaLogin from './pages/TelaLogin/index.js';
-import TelaEquipe from './pages/TelaEquipe/index.js'
-import TelaContato from './pages/TelaContato/index.js';
-import TelaCadastroEstagiario from './pages/TelaCadastroEstagiario/index.js';
+import { Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
+// Importação das suas PÁGINAS (verifique os nomes e caminhos)
+import TelaInicial from './pages/TelaInicial'; 
+import TelaLogin from './pages/TelaLogin';
+import TelaCadastro from './pages/TelaCadastro'; 
+import TelaSobre from './pages/TelaEquipe';
+import TelaContato from './pages/TelaEquipe';
+import TelaDashboard from './pages/TelaDashboard'; 
 
 function App() {
   return (
-    <BrowserRouter>
+    <AuthProvider>
+      {/* O <Router> foi removido daqui */}
       <Routes>
+        {/* --- ROTAS PÚBLICAS --- */}
         <Route path="/" element={<TelaInicial />} />
+        <Route path="/sobre" element={<TelaSobre />} />
+        <Route path="/contato" element={<TelaContato />} />
         <Route path="/login" element={<TelaLogin />} />
         <Route path="/cadastro" element={<TelaCadastro />} />
-        <Route path="/sobre" element={<TelaEquipe />} />
-        <Route path="/contato" element={<TelaContato />} />
-        <Route path="/cadastroEstagiario" element={<TelaCadastroEstagiario />} /> 
+        
+        {/* --- ROTA PROTEGIDA (PRIVADA) --- */}
+        <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute>
+              <TelaDashboard />
+            </ProtectedRoute>
+          } 
+        />
+        
+        {/* Rota padrão para qualquer outro caminho */}
+        <Route path="*" element={<TelaInicial />} />
       </Routes>
-    </BrowserRouter>
+    </AuthProvider>
   );
 }
 

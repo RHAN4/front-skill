@@ -1,0 +1,82 @@
+.main-funcionario {
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+}
+
+.cadastro-funcionario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: skillFontNormal;
+    font-weight: 50;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.cadastro-funcionario h1 {
+    font-size: 2rem;
+    color: rgb(0, 0, 61);
+    text-align: center;
+}
+
+.cadastro-funcionario fieldset {
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+    padding: 2em 1.5em;
+    border: 2px solid #131C2F;
+}
+
+.cadastro-funcionario fieldset legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background: #131C2F;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    gap: 6px;
+    color: white;
+    font-weight: 50;
+}
+
+.cadastro-funcionario fieldset legend img {
+    width: 30px;
+    height: 30px;
+}
+
+.cadastro-funcionario fieldset input,
+.cadastro-funcionario fieldset select {
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+    border: 2px solid #131C2F;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.cadastro-funcionario fieldset select {
+    width: 300px; /* Mantém o mesmo tamanho dos inputs */
+    height: 30px;
+}
+
+
+.cadastro-funcionario button {
+    background: #EAD1B9;
+    width: 17rem;
+    height: 30px;
+    font-family: skillFontItalico;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+
+.cadastro-funcionario button:hover {
+    background: #5D82AD;
+}
